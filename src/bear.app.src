@@ -3,6 +3,6 @@
   {description, ""},
   {vsn, git},
   {registered, []},
-  {applications, []},
+  {applications, [kernel, stdlib]},
   {env, []}
  ]}.
