@@ -25,12 +25,14 @@
 
 -module(bear).
 
--compile([export_all]).
-
 -export([
-         get_statistics/1,
-         get_statistics/2
-        ]).
+    get_statistics/1,
+    get_statistics/2
+]).
+
+-ifdef(TEST).
+-compile([export_all]).
+-endif.
 
 -define(HIST_BINS, 10).
 
@@ -307,7 +309,7 @@ get_kendall_correlation(_, Values) when length(Values) < ?STATS_MIN ->
 get_kendall_correlation(Values1, Values2) when length(Values1) /= length(Values2) ->
     0.0;
 get_kendall_correlation(Values1, Values2) ->
-    bear:kendall_correlation(Values1, Values2).
+    kendall_correlation(Values1, Values2).
 
 get_spearman_correlation(Values, _) when length(Values) < ?STATS_MIN ->
     0.0;
